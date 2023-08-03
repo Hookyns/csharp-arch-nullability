@@ -5,22 +5,19 @@ namespace Arch.Nullability.Program.Configurators;
 
 public class LoggingConfigurator : IConfigurator
 {
-    public void Configure(WebApplicationBuilder builder)
-    {
-        builder.Logging.ClearProviders();
+	public void Configure(WebApplicationBuilder builder)
+	{
+		builder.Logging.ClearProviders();
 
-        Log.Logger = new LoggerConfiguration()
-            .Enrich.FromLogContext()
-            .WriteTo.Console()
-            .CreateLogger();
+		Log.Logger = new LoggerConfiguration()
+			.Enrich.FromLogContext()
+			.WriteTo.Console()
+			.CreateLogger();
 
-        builder.Services.AddLogging(loggingBuilder =>
-        {
-            loggingBuilder.AddSerilog(dispose: true);
-        });
-    }
+		builder.Services.AddLogging(loggingBuilder => { loggingBuilder.AddSerilog(dispose: true); });
+	}
 
-    public void Configure(WebApplication app)
-    {
-    }
+	public void Configure(WebApplication app)
+	{
+	}
 }

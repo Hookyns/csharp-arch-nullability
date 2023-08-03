@@ -8,25 +8,26 @@ public class ProblemDetailsConfigurator : IConfigurator
 	public void Configure(WebApplicationBuilder builder)
 	{
 		builder.Services
-			.AddProblemDetails(o => o.CustomizeProblemDetails = problemContext =>
-			{
-				problemContext.ProblemDetails.Instance = Guid.NewGuid().ToString();
-
-				// Log the ProblemDetail
-				Exception? error = problemContext.HttpContext.Features.Get<IExceptionHandlerPathFeature>()?.Error;
-
-				if (error != null)
+			.AddProblemDetails(
+				o => o.CustomizeProblemDetails = problemContext =>
 				{
-					ILogger? logger = problemContext.HttpContext.RequestServices.GetService<ILogger>();
+					problemContext.ProblemDetails.Instance = Guid.NewGuid().ToString();
 
-					logger?.LogError(
-						error,
-						"Instance: {instance}; {message}",
-						problemContext.ProblemDetails.Instance,
-						error.Message
-					);
-				}
-			})
+					// Log the ProblemDetail
+					Exception? error = problemContext.HttpContext.Features.Get<IExceptionHandlerPathFeature>()?.Error;
+
+					if (error != null)
+					{
+						ILogger? logger = problemContext.HttpContext.RequestServices.GetService<ILogger>();
+
+						logger?.LogError(
+							error,
+							"Instance: {instance}; {message}",
+							problemContext.ProblemDetails.Instance,
+							error.Message
+						);
+					}
+				})
 			;
 	}
 

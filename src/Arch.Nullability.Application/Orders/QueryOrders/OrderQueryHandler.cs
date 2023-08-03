@@ -2,9 +2,9 @@
 
 public class OrderQueryHandler
 {
-    public async Task<OrderResult> Handle(OrderQuery query)
-    {
-        Console.WriteLine("query executed");
-        return new OrderResult(0);
-    }
+	public async Task<OrderResult> Handle(OrderQuery query)
+	{
+		Console.WriteLine("query executed");
+		return new OrderResult(0);
+	}
 }

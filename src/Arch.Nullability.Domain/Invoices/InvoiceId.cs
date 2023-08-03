@@ -2,5 +2,5 @@
 
 public record InvoiceId(Guid Id)
 {
-    public static InvoiceId Null = new(Guid.Empty);
+	public static InvoiceId Null = new(Guid.Empty);
 }

@@ -4,6 +4,6 @@ namespace Arch.Nullability.Core.ApplicationLayers;
 
 public interface ILayer
 {
-    void Configure(IHostBuilder builder);
-    void Configure(IHost app);
+	void Configure(IHostBuilder builder);
+	void Configure(IHost app);
 }

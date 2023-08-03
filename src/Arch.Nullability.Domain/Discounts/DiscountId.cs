@@ -2,5 +2,5 @@
 
 public record DiscountId(int Id)
 {
-    public static DiscountId Null = new(0);
+	public static DiscountId Null = new(0);
 }

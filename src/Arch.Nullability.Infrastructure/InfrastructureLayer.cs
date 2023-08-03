@@ -5,11 +5,11 @@ namespace Arch.Nullability.Infrastructure;
 
 public class InfrastructureLayer : ILayer
 {
-    public void Configure(IHostBuilder builder)
-    {
-    }
+	public void Configure(IHostBuilder builder)
+	{
+	}
 
-    public void Configure(IHost app)
-    {
-    }
+	public void Configure(IHost app)
+	{
+	}
 }
